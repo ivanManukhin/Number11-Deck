@@ -1,0 +1,18 @@
+CXX      = g++
+CXXFLAGS = -Wall -Wextra -g
+
+all: queue_test
+
+queue_test: main.o Queue.o
+	$(CXX) $(CXXFLAGS) -o $@ main.o Queue.o
+
+main.o: main.cpp Queue.h
+	$(CXX) $(CXXFLAGS) -c main.cpp
+
+Queue.o: Queue.cpp Queue.h
+	$(CXX) $(CXXFLAGS) -c Queue.cpp
+
+clean:
+	rm -f *.o queue_test
+
+.PHONY: all clean
